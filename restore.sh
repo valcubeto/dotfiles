@@ -16,3 +16,6 @@ cp -i -t $HOME/.config/alacritty/themes/ \
 mkdir -v -p $HOME/.config/VSCodium/User/
 cp -i -t $HOME/.config/VSCodium/User/ \
     codium/settings.json
+
+# Avoid using master.
+git config --global init.defaultBranch main
