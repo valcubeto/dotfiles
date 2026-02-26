@@ -35,7 +35,7 @@ shopt -s checkwinsize
 
 # -- PROMPT --
 
-# set variable identifying the chroot you work in.
+# Set variable identifying the chroot you work in.
 # (used in the prompt below).
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -65,25 +65,37 @@ fi
 
 reset_style() { printf "\e[00m"; }
 
-PS1='${debian_chroot:+($debian_chroot) }'
+PS1="${debian_chroot:+($debian_chroot) }"
 if [ "$color_prompt" = yes ]; then
+    # Looks like dark magic the first time you see it.
+    # The `\\[` and `\\]` are for the bash prompt,
+    # to tell it anything inside it is not printable
+    # (sometimes the cursor position breaks otherwise).
+    # `\e` is the escape character. Basically sends an
+    # instruction to the terminal. In this case, it starts
+    # with `[` and ends with `m`. Styles are just numbers,
+    # sepparated by semicolons.
+    # Search "ANSI escape codes" for more info!
+    # `$1` is the style start, and `$3` the style end.
+    # `%s` gets replaced with the corresponding argument.
     ansi() {
         printf "\\[\e[%sm\\]%s\\[\e[%sm\\]" "$1" "$2" "$3"
     }
 
-    start_bold() {
-        printf ""
-        # printf "\\[\e[01m\\]";
-    }
+    # This was originally to display the input as bold.
+    # I realized it was a bad idea.
+    # start_bold() {
+    #     printf "\\[\e[01m\\]";
+    # }
 
     bold_green() { ansi "01;32" "$1" "22;39"; }
-    bold_blue() { ansi "01;34" "$1" "22;39"; }
+    bold_blue()  { ansi "01;34" "$1" "22;39"; }
 
     user() { bold_green '\u'; }
     working_dir() { bold_blue '\w'; }
 
-    # Print a colored prompt, and display the command as bold.
-    PS1+="$(printf '%s:%s \$ %s' "$(user)" "$(working_dir)" "$(start_bold)")"
+    # Print a colored prompt.
+    PS1+="$(printf '%s:%s \$ ' "$(user)" "$(working_dir)")"
     # Reset styles just before the command runs.
     # TODO: use PROMPT_COMMAND to enable it only once for
     # each command.
@@ -122,7 +134,6 @@ export BASHRC="$HOME/.bashrc"
 
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-# Double quotes because syntax highlighting breaks.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -139,7 +150,8 @@ if ! shopt -oq posix; then
 fi
 
 
-# Avoid preppending again if you `source` multiple times
+# Avoid preppending again, if you `source` multiple times.
+# See `alias path` in `.bash_aliases`
 path_preppend() {
   # Do nothing if path doesn't exist.
   if [ ! -d "$1" ]; then
@@ -147,28 +159,41 @@ path_preppend() {
     return 1
   fi
   case ":$PATH:" in
-    # Don't preppend if already present.
+    # Do nothing if already present.
     *":$1:"*) ;;
     *) PATH="$1:$PATH" ;;
   esac
 }
 
 # Bun
-export BUN_INSTALL="$HOME/.bun"
-path_preppend "$BUN_INSTALL/bin"
+# I know there is a double slash, shut up.
+export BUN_INSTALL=$HOME/.bun/
+path_preppend $BUN_INSTALL/bin/
 
 # Cargo
-export CARGO_HOME="$HOME/.cargo"
-path_preppend "$CARGO_HOME/bin"
+export CARGO_HOME=$HOME/.cargo/
+path_preppend $CARGO_HOME/bin/
 
 # Alacritty
 export ALACRITTY_CFG="$HOME/.config/alacritty"
 
-function vscw {
-  cd "$(\
+# This function finds the title of VSCodium (likely
+# the current workspace path) and changes the current
+# directory.
+# I can't find an appropiate name for this function.
+# I'll probably use a keyboard shortcut for calling it.
+go_to_vscodium_workspace() {
+  # wmctrl -lx: list all windows, and display their app name.
+  # grep vscodium (-): only get the line containing "vscodium"
+  # awk: `$` is an "operator" to get the field at the given index.
+  #      `NF` is the number of fields, so `$NF` returns the last field.
+  #      `gsub` replaces the character `~` with the value of the
+  #      environment variable $HOME.
+  #      I don't remember why the `~` symbol didn't work tbh.
+  cd "$( \
     wmctrl -lx | \
     grep vscodium | \
     awk '{ gsub(/~/, ENVIRON["HOME"], $NF); print $NF }' \
-  )";
+  )"
 }
 
