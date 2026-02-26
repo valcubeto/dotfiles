@@ -7,3 +7,4 @@ be prompted for each config file.
 # TODO
 - Put my nvim + NVChad config here.
 - Move Git config into its own file/folder.
+- Restore VSCodium extensions too.
