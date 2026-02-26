@@ -1,0 +1,26 @@
+[general]
+import = [
+  "./themes/vega.toml"
+]
+
+[window]
+opacity = 0.85
+startup_mode = "Fullscreen"
+
+[font]
+normal = { family = "0xProto Nerd Font", style = "Regular" }
+size = 14
+
+[cursor.style]
+blinking = "On"
+
+[mouse]
+hide_when_typing = true
+
+[keyboard]
+bindings = [
+  { key = "F11", action = "ToggleFullscreen" },
+  { mods = "Control", key = "M", action = "None" },
+  { mods = "Control|Shift", key = "M", action = "None" },
+  { mods = "Control", key = "O", action = "None" },
+]

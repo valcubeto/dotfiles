@@ -1,0 +1,207 @@
+{
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.bracketPairColorization.enabled": false,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.fontFamily": "'0xProto Nerd Font', 'JetBrains Mono Regular', 'Victor Mono', 'Roboto Mono', monospace",
+  "editor.fontLigatures": false,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment, keyword, storage, string, entity.name.function, variable.language",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "string",
+        "settings": {
+          "foreground": "#eee960",
+        }
+      },
+      {
+        "scope": "keyword, keyword.operator, keyword.control, storage",
+        "settings": {
+          "foreground": "#ff3c8d",
+        },
+      },
+      {
+        "scope": "storage.type, entity.name, entity.name.namespace",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#2cf1ff"
+        }
+      },
+      {
+        "scope": "entity.name.function",
+        "settings": {
+          "foreground": "#79c0ff"
+        }
+      },
+      {
+        "scope": "entity.name.type",
+        "settings": {
+          "foreground": "#79c0ff",
+          "fontStyle": "italic underline"
+        }
+      },
+      {
+        "scope": "keyword.operator",
+        "settings": {
+          "fontStyle": ""
+        }
+      },
+      {
+        "scope": "constant.numeric, constant.language, variable.language, constant.character",
+        "settings": {
+          "foreground": "#ba6aff"
+        }
+      },
+      {
+        "scope": "source, variable, meta",
+        "settings": {
+          "foreground": "#dadada",
+        }
+      },
+      {
+        "scope": "variable.parameter",
+        "settings": {
+          "foreground": "#ffc219"
+        }
+      }
+    ],
+  },
+  "editor.fontSize": 23,
+  "editor.fontWeight": "300",
+  "editor.guides.indentation": false,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.stickyTabStops": true,
+  "editor.tabSize": 4,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.incrementalNaming": "simple",
+  "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    "Cargo.lock": "toml"
+  },
+  "files.defaultLanguage": "${activeEditorLanguage}",
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.git": false
+  },
+  "files.readonlyInclude": {
+    "**/.cargo/registry/src/**/*.rs": true,
+    "**/.cargo/git/checkouts/**/*.rs": true,
+    "**/lib/rustlib/src/rust/library/**/*.rs": true,
+  },
+  "window.commandCenter": true,
+  "window.customTitleBarVisibility": "auto",
+  "window.menuBarVisibility": "compact",
+  "window.title": "${rootPath}",
+  "window.titleBarStyle": "custom",
+  "workbench.activityBar.location": "bottom",
+  "workbench.editor.untitled.labelFormat": "name",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.iconTheme": "bearded-icons",
+  "workbench.navigationControl.enabled": false,
+  "workbench.sideBar.location": "right",
+  "workbench.statusBar.visible": true,
+  "scm.inputFontFamily": "editor",
+  "security.workspace.trust.untrustedFiles": "open",
+
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.fontSize": 20,
+  "terminal.integrated.fontWeightBold": 600,
+
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+
+  "highlight-bad-chars.allowedUnicodeChars": ["¿", "¡", "ñ", "Ñ"],
+
+  "rust-analyzer.cargo.allTargets": true,
+  "rust-analyzer.cargo.autoreload": true,
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.imports.prefix": "crate",
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "rust-analyzer.showUnlinkedFileNotification": false,
+
+  "todohighlight.isEnable": true,
+  "todohighlight.maxFilesForSearch": 100,
+  "todohighlight.include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.css",
+    "**/*.scss",
+    "**/*.php",
+    "**/*.rb",
+    "**/*.txt",
+    "**/*.mdown",
+    "**/*.md",
+    "**/*.json"
+  ],
+  "todohighlight.defaultStyle": {
+    "color": "cyan",
+    "backgroundColor": "rgb(255, 255, 255, 0.3)",
+  },
+  "todohighlight.keywords": [
+    "todo!",
+    {
+      "text": "TODO:",
+      "color": "cyan",
+      "backgroundColor": "rgb(255, 255, 255, 0.3)"
+    },
+    {
+      "text": "FIXME:",
+      "color": "white",
+      "backgroundColor": "rgb(255, 80, 80, 0.5)"
+    },
+  ],
+
+	"npm.packageManager": "bun",
+  "bun.runtime": "/home/guady/.bun/bin/bun.exe",
+  "typescript.npm": "/home/guady/.bun/bin/bun.exe",
+  "typescript.tsserver.nodePath": "/home/guady/.bun/bin/bun.exe",
+  "typescript.inlayHints.parameterTypes.enabled": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "vscord.app.name": "VSCodium",
+  "vscord.behaviour.additionalFileMapping": {
+    "bat|cmd": "batch",
+    "h": "c",
+    "js": "javascript",
+    "json": "JSON",
+    "jsx": "javascript_react",
+    "kt": "kotlin",
+    "ps1": "powershell",
+    "py": "python",
+    "rs": "rust",
+    "sh": "bash",
+    "ts": "typescript",
+    "tsx": "typescript_react",
+  },
+  "vscord.status.details.text.notInFile": "Somewhere in {workspace}",
+  "vscord.status.details.text.editing": "Editing {file_name}{file_extension}:{current_line}:{current_column}",
+  "vscord.status.details.text.idle":    "Viewing {file_name}{file_extension}",
+  "vscord.status.details.text.viewing": "Viewing {file_name}{file_extension}",
+  "vscord.status.state.text.editing": "{problems_count_errors} errors, {problems_count_warnings} warnings.",
+  "vscord.status.state.text.idle":    "{problems_count_errors} errors, {problems_count_warnings} warnings.",
+  "vscord.status.state.text.viewing": "{problems_count_errors} errors, {problems_count_warnings} warnings.",
+  "vscord.status.details.text.noWorkSpaceText": "Not in a workspace",
+  "vscord.status.state.text.noWorkspaceFound": "Not in a workspace",
+  "update.showReleaseNotes": false,
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "update.enableWindowsBackgroundUpdates": false,
+  "update.mode": "manual",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.colorTheme": "GitHub Dark",
+}
