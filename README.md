@@ -8,3 +8,4 @@ be prompted for each config file.
 - Put my nvim + NVChad config here.
 - Move Git config into its own file/folder.
 - Restore VSCodium extensions too.
+- Restore some apt-installed programs.
