@@ -1,9 +1,14 @@
 #!/bin/env bash
 
 ask() {
+    # Make this variable local, meaning it will only exist
+    # inside this function.
     local word
+    # `-p` is for "prompt"
     read -p "$1 (y/N) " word
+    # If the variable is empty, use `N` as the default value.
     word="${word:-N}"
+    # Self explanatory.
     case "$word" in
         [Yy]) return 0 ;;
         [Nn]) return 1 ;;

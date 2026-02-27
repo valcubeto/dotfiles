@@ -1,3 +1,5 @@
+# This is a modification of the default Linux Mint bashrc.
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # See /usr/share/doc/bash/examples/startup-files (in the
 # package bash-doc) for examples.
@@ -10,7 +12,17 @@ esac
 
 # Don't put duplicate lines or lines starting with space in
 # the history.
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
+
+# Warn about running background jobs before exiting.
+shopt -s checkjobs
+
+# Attempts to correct minor spelling errors in dir names
+# during completion.
+shopt -s dirspell
+
+# When the line is empty, tab completion does nothing.
+shopt -s no_empty_cmd_completion
 
 # Append to the history file, don't overwrite it.
 shopt -s histappend
@@ -130,6 +142,7 @@ fi
 # Colored GCC warnings and errors.
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# May be located at "$HOME/.bash/bashrc".
 export BASHRC="$HOME/.bashrc"
 
 # Alias definitions.
@@ -166,13 +179,12 @@ path_preppend() {
 }
 
 # Bun
-# I know there is a double slash, shut up.
-export BUN_INSTALL=$HOME/.bun/
-path_preppend $BUN_INSTALL/bin/
+export BUN_INSTALL="$HOME/.bun"
+path_preppend "$BUN_INSTALL/bin"
 
 # Cargo
-export CARGO_HOME=$HOME/.cargo/
-path_preppend $CARGO_HOME/bin/
+export CARGO_HOME="$HOME/.cargo"
+path_preppend "$CARGO_HOME/bin"
 
 # Alacritty
 export ALACRITTY_CFG="$HOME/.config/alacritty"
