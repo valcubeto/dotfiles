@@ -77,6 +77,7 @@ fi
 
 reset_style() { printf "\e[00m"; }
 
+# Note: I moved to Starship.
 PS1="${debian_chroot:+($debian_chroot) }"
 if [ "$color_prompt" = yes ]; then
     # Looks like dark magic the first time you see it.
@@ -218,3 +219,5 @@ dotfiles() {
       git push
   )
 }
+
+eval "$(starship init bash)"
