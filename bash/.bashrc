@@ -205,7 +205,16 @@ go_to_vscodium_workspace() {
   cd "$( \
     wmctrl -lx | \
     grep vscodium | \
-    awk '{ gsub(/~/, ENVIRON["HOME"], $NF); print $NF }' \
+    awk '{ gsub(/^~/, ENVIRON["HOME"], $NF); print $NF }' \
   )"
 }
 
+dotfiles() {
+  (
+    set -e
+    cd $HOME/Dev/dotfiles
+    git add . && \
+      git commit -m "dotfiles function" && \
+      git push
+  )
+}
