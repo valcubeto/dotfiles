@@ -4,18 +4,28 @@ import = [
 ]
 
 [window]
-opacity = 0.85
+opacity = 0.80
 startup_mode = "Fullscreen"
+padding = { x = 7, y = 7 }
+# blur = true
 
 [font]
 normal = { family = "0xProto Nerd Font", style = "Regular" }
 size = 14
 
 [cursor.style]
-blinking = "On"
+shape = "Beam"
+blinking = "Always"
+
+[cursor]
+blink_timeout = 0
 
 [mouse]
 hide_when_typing = true
+bindings = [
+  { mouse = "Right", mods = "Control", action = "None" },
+  { mouse = "Middle", mods = "Control", action = "None" },
+]
 
 [keyboard]
 bindings = [
