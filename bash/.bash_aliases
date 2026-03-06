@@ -2,12 +2,13 @@
 # you may want to clear old aliases.
 unalias -a
 
+alias reload=". $BASHRC"
+
 # Some shortcuts.
 alias p="printf '%s\n'"
 alias i="sudo apt install"
 alias v="nvim"
 alias c="codium -a"
-alias reload=". $BASHRC"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -21,6 +22,7 @@ alias grep="grep --color=auto -E"
 alias path="path -Qsnerd-font"
 # -P: No page.
 alias bat="batcat -P --theme 'Monokai Extended' --style 'numbers'"
+alias eza='eza -ah --color --icons --no-quotes --level=1 --sort=Name --group-directories-first --no-permissions --no-user --time-style="+%e %b, %H:%M"'
 
 # Add an "alert" alias for long running commands.
 # Example: sleep 10; alert
