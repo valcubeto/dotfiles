@@ -3,7 +3,7 @@
 unalias -a
 
 # Some shortcuts.
-alias p="printlnf "%s""
+alias p="printf '%s\n'"
 alias i="sudo apt install"
 alias v="nvim"
 alias c="codium -a"
