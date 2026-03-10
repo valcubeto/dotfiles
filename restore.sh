@@ -27,6 +27,12 @@ if ask "Restore Bash config files?"; then
         bash/.bash_aliases
 fi
 
+if ask "Restore Starship config files?"; then
+    mkdir -v -p $HOME/.config
+    cp -i -t $HOME/.config \
+        starship/starship.toml
+fi
+
 if ask "Restore Alacritty config files?"; then
     # -p: No error, and also creates needed parent folders.
     mkdir -v -p $HOME/.config/alacritty/themes/
