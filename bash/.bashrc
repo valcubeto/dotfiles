@@ -214,7 +214,7 @@ dotfiles() {
   (
     set -e
     cd $HOME/Dev/dotfiles
-    git add . && \
+    git add --all && \
       git commit -m "dotfiles function" && \
       git push
   )
