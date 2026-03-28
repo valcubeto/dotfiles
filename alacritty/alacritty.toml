@@ -29,8 +29,10 @@ bindings = [
 
 [keyboard]
 bindings = [
-  { key = "F11", action = "ToggleFullscreen" },
-  { mods = "Control", key = "M", action = "None" },
-  { mods = "Control|Shift", key = "M", action = "None" },
-  { mods = "Control", key = "O", action = "None" },
+  {                         key = "F11", action = "ToggleFullscreen" },
+  { mods = "Control",       key = "M",   action = "None" },
+  { mods = "Control|Shift", key = "M",   action = "None" },
+  { mods = "Control",       key = "O",   action = "None" },
+  { mods = "Control|Shift", key = "L",   action = "ClearHistory" },
+  { mods = "Control|Shift", key = "N",   action = "SpawnNewInstance" }
 ]

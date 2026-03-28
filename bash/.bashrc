@@ -4,11 +4,17 @@
 # See /usr/share/doc/bash/examples/startup-files (in the
 # package bash-doc) for examples.
 
+contains() {
+  case "$1" in
+    *"$2"*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
 # If not running interactively, don't do anything.
-case $- in
-    *i*) ;;
-      *) return ;;
-esac
+if ! contains "$-" "i"; then
+  return
+fi
 
 # Don't put duplicate lines or lines starting with space in
 # the history.
@@ -169,9 +175,10 @@ fi
 path_preppend() {
   # Do nothing if path doesn't exist.
   if [ ! -d "$1" ]; then
-    echo "$1 NOT added to PATH: file does not exist"
+    echo "$1 NOT added to PATH: path is not a directory."
     return 1
   fi
+
   case ":$PATH:" in
     # Do nothing if already present.
     *":$1:"*) ;;
@@ -195,7 +202,7 @@ export ALACRITTY_CFG="$HOME/.config/alacritty"
 # directory.
 # I can't find an appropiate name for this function.
 # I'll probably use a keyboard shortcut for calling it.
-go_to_vscodium_workspace() {
+go-to-vscodium-workspace() {
   # wmctrl -lx: list all windows, and display their app name.
   # grep vscodium (-): only get the line containing "vscodium"
   # awk: `$` is an "operator" to get the field at the given index.
@@ -203,20 +210,23 @@ go_to_vscodium_workspace() {
   #      `gsub` replaces the character `~` with the value of the
   #      environment variable $HOME.
   #      I don't remember why the `~` symbol didn't work tbh.
-  cd "$( \
+  local workspace="$( \
     wmctrl -lx | \
     grep vscodium | \
-    awk '{ gsub(/^~/, ENVIRON["HOME"], $NF); print $NF }' \
+    awk '{ sub(/^~/, ENVIRON["HOME"], $NF); print $NF }' \
   )"
+  # -d: is it a directory?
+  test -d "$workspace" \
+    && cd "$workspace" \
+    || echo "No valid directory"
 }
 
 dotfiles() {
   (
     set -e
     cd $HOME/Dev/dotfiles
-    git add . && \
-      git commit -m "dotfiles function" && \
-      git push
+    git commit --all -m "dotfiles function" \
+      && git push
   )
 }
 
