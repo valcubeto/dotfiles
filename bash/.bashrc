@@ -49,7 +49,7 @@ shopt -s checkwinsize
 
 # Make less more friendly for non-text input files.
 # See lesspipe(1).
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+test -x /usr/bin/lesspipe && eval "$(SHELL=/bin/sh lesspipe)"
 
 # -- PROMPT --
 
@@ -110,8 +110,8 @@ if [ "$color_prompt" = yes ]; then
     bold_green() { ansi "01;32" "$1" "22;39"; }
     bold_blue()  { ansi "01;34" "$1" "22;39"; }
 
-    user() { bold_green '\u'; }
-    working_dir() { bold_blue '\w'; }
+    user="$(bold_green '\u')"
+    working_dir="$(bold_blue '\w')"
 
     # Print a colored prompt.
     PS1+="$(printf '%s:%s \$ ' "$(user)" "$(working_dir)")"
@@ -140,9 +140,9 @@ unset color_prompt force_color_prompt
 
 # Enable color support of ls and also add handy aliases.
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && \
-      eval "$(dircolors -b ~/.dircolors)" || \
-      eval "$(dircolors -b)"
+    test -r ~/.dircolors \
+      && eval "$(dircolors -b ~/.dircolors)" \
+      || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
 
@@ -204,16 +204,10 @@ export ALACRITTY_CFG="$HOME/.config/alacritty"
 # I'll probably use a keyboard shortcut for calling it.
 go-to-vscodium-workspace() {
   # wmctrl -lx: list all windows, and display their app name.
-  # grep vscodium (-): only get the line containing "vscodium"
-  # awk: `$` is an "operator" to get the field at the given index.
-  #      `NF` is the number of fields, so `$NF` returns the last field.
-  #      `gsub` replaces the character `~` with the value of the
-  #      environment variable $HOME.
-  #      I don't remember why the `~` symbol didn't work tbh.
+  # grep vscodium: only get the line containing "vscodium"
   local workspace="$( \
-    wmctrl -lx | \
-    grep vscodium | \
-    awk '{ sub(/^~/, ENVIRON["HOME"], $NF); print $NF }' \
+    wmctrl -lx \
+      | grep vscodium \
   )"
   # -d: is it a directory?
   test -d "$workspace" \
@@ -225,7 +219,8 @@ dotfiles() {
   (
     set -e
     cd $HOME/Dev/dotfiles
-    git commit --all -m "dotfiles function" \
+    git add . \
+      && git commit -m "dotfiles function" \
       && git push
   )
 }
