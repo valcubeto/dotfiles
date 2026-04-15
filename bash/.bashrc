@@ -114,7 +114,7 @@ if [ "$color_prompt" = yes ]; then
     working_dir="$(bold_blue '\w')"
 
     # Print a colored prompt.
-    PS1+="$(printf '%s:%s \$ ' "$(user)" "$(working_dir)")"
+    PS1+="$(printf '%s:%s \$ ' "$user" "$working_dir")"
     # Reset styles just before the command runs.
     # TODO: use PROMPT_COMMAND to enable it only once for
     # each command.
@@ -208,11 +208,12 @@ go-to-vscodium-workspace() {
   local workspace="$( \
     wmctrl -lx \
       | grep vscodium \
+      | awk '{ sub(/^~/, ENVIRON["HOME"], $NF); print $NF }' \
   )"
   # -d: is it a directory?
   test -d "$workspace" \
     && cd "$workspace" \
-    || echo "No valid directory"
+    || echo "No valid directory: $workspace"
 }
 
 dotfiles() {
@@ -226,3 +227,5 @@ dotfiles() {
 }
 
 eval "$(starship init bash)"
+
+path_preppend "$HOME/.local/bin"

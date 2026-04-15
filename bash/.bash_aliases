@@ -2,35 +2,28 @@
 # you may want to clear old aliases.
 unalias -a
 
-alias reload='. $BASHRC'
+alias reload='source $BASHRC'
+
+python() {
+    test "$#" = 0 \
+        && ptpython \
+        || python3 "$@"
+}
 
 # Some shortcuts.
-alias p='printf "%s\n"'
-alias i='sudo apt install'
-alias v='nvim'
-alias c='codium -a'
+alias print='printf "%s\n"'
+alias apti='sudo apt install'
+alias giti='git clone --depth=1'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias -- '-'='cd -'
 
-# 'github install'.
-alias ghi='git clone --depth=1'
-
 # Default flags.
-alias grep='grep --color=auto -E'
-alias path='path -Qsnerd-font'
+alias codium='codium -a'
+alias grep='grep -E --color=auto'
+alias pathcheck='pathcheck --status-style=icons --header --footer --descriptions --format="{path:<}(  {status:-})(  {description:<})"'
 alias bat='batcat --paging=never --theme="Monokai Extended" --style="numbers"'
 alias eza='eza --all --header --color --icons --no-quotes --level=1 --sort=Name --group-directories-first --no-permissions --no-user --time-style="+%e %b, %H:%M"'
 alias ls='eza'
 alias ll='ls -l'
-
-# Add an "alert" alias for long running commands.
-# Example: sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e "\""s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//"\"")"'
-
-last_command() {
-    history | \
-        tail -n1 | \
-        sed -e "s/^\s*[0-9]\+\s*//;s/[;&|]\s*last_command$//"
-}

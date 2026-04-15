@@ -10,12 +10,12 @@ cursor = '#d9d9d9'
 
 [colors.normal]
 black   = '#2a2c3f'
-red     = '#f75c78'
-green   = '#8add52'
+red     = '#e2506b'
+green   = '#84d350'
 yellow  = '#e6c364'
-blue    = '#5981d6'
+blue    = '#6d8fff'
 magenta = '#a775be'
-cyan    = '#449dab'
+cyan    = '#45bbce'
 white   = '#9fa2df'
 
 [colors.bright]
@@ -30,10 +30,10 @@ white   = '#acb0d0'
 
 [colors.dim]
 black   = '#232323'
-red     = '#74423f'
-green   = '#5e6547'
-yellow  = '#8b7653'
+red     = '#8b3f3b'
+green   = '#588041'
+yellow  = '#b39032'
 blue    = '#556b79'
 magenta = '#6e4962'
-cyan    = '#5c8482'
-white   = '#828282'
+cyan    = '#61b1ad'
+white   = '#9b9b9b'

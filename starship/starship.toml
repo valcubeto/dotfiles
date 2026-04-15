@@ -3,11 +3,11 @@
 format = """\
 [](fg:blue)[$os ](bg:blue)\
 [](fg:blue bg:peach)[$directory](bg:peach)\
-[](bg:red fg:peach)\
+[](bg:blue fg:peach)\
 [$git_branch\
 $git_metrics\
-$git_status](bg:red)\
-[](fg:red bg:green)\
+$git_status](bg:blue)\
+[](fg:blue bg:green)\
 [$c\
 $rust\
 $golang\
@@ -32,6 +32,7 @@ rosewater = '#f5e0dc'
 flamingo = '#f2cdcd'
 pink = '#f5c2e7'
 mauve = '#cba6f7'
+magenta = '#8d6dff'
 # red = '#f38ba8'
 maroon = '#eba0ac'
 peach = '#ffb048'
@@ -40,7 +41,7 @@ peach = '#ffb048'
 teal = '#94e2d5'
 sky = '#89dceb'
 sapphire = '#74c7ec'
-blue = '#6d8fff'
+# blue = '#6d8fff'
 lavender = '#a7a6ff'
 text = '#cdd6f4'
 subtext1 = '#bac2de'
@@ -198,7 +199,6 @@ ignore_submodules = true
 only_nonzero_diffs = true
 
 [git_status]
-style = 'bg:red'
 modified = '󰏫 '
 ahead = '󱒃 '
 behind = '󱧐 '
@@ -212,7 +212,7 @@ typechanged = ' '
 untracked = ' '
 up_to_date = " "
 ignore_submodules = true
-format = '[ $all_status$ahead_behind]($style)'
+format = ' $all_status$ahead_behind'
 
 [nodejs]
 symbol = ''
@@ -258,7 +258,7 @@ symbol = ''
 disabled = false
 style = 'bg:blue'
 format = '[  $time ]($style)'
-time_format = '%H:%M %p'
+time_format = '%I:%M %p'
 
 [character]
 disabled = false

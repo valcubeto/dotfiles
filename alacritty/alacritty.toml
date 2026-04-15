@@ -10,7 +10,7 @@ padding = { x = 7, y = 7 }
 # blur = true
 
 [font]
-normal = { family = "0xProto Nerd Font", style = "Regular" }
+normal = { family = "JetBrains Mono Nerd Font", style = "Regular" }
 size = 14
 
 [cursor.style]
