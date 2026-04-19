@@ -190,9 +190,13 @@ path_preppend() {
 export BUN_INSTALL="$HOME/.bun"
 path_preppend "$BUN_INSTALL/bin"
 
-# Cargo
+# Rust
 export CARGO_HOME="$HOME/.cargo"
 path_preppend "$CARGO_HOME/bin"
+export RUST_TARGET_LINUX="x86_64-unknown-linux-gnu"
+export RUST_TARGET_WINDOWS="x86_64-pc-windows-gnu"
+
+path_preppend "$HOME/.local/bin"
 
 # Alacritty
 export ALACRITTY_CFG="$HOME/.config/alacritty"
@@ -227,5 +231,3 @@ dotfiles() {
 }
 
 eval "$(starship init bash)"
-
-path_preppend "$HOME/.local/bin"
