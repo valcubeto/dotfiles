@@ -1,0 +1,4 @@
+{
+    // Ignore those trailing commas.
+    "json.validate.enable": false
+}

@@ -225,7 +225,7 @@ dotfiles() {
     # Exit on error.
     set -e
     cd $HOME/dotfiles
-    source backup.sh
+    yes | ./backup.sh
     git add . \
       && git commit -m "dotfiles function" \
       && git push

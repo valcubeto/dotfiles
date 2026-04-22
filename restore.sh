@@ -3,8 +3,6 @@
 source utils.sh
 
 if ask "Restore Bash config files?"; then
-    # -i: Prompt before overwrite.
-    # -t <dir> <files...>: move all files into dir
     cp  --interactive \
         --target-directory $HOME/ \
         bash/.bashrc \
@@ -12,7 +10,6 @@ if ask "Restore Bash config files?"; then
 fi
 
 if ask "Restore Starship config files?"; then
-    # -p: No error, and also creates needed parent folders.
     mkdir --verbose --parents $HOME/.config
     cp  -i \
         -t $HOME/.config \

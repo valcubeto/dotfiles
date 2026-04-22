@@ -1,3 +1,10 @@
+set -e
+
+fatal() {
+    printf "Fatal: $1\n" >&2
+    exit 1
+}
+
 ask() {
     # Make this variable local, meaning it will only exist
     # inside this function.
@@ -9,8 +16,29 @@ ask() {
         [Yy]) return 0 ;;
         [Nn]) return 1 ;;
         *)
-            printf "Unrecognized answer, skipping.\n" >&2
-            return 2
+            echo "Unrecognized answer" >&2
+            # Prompt until valid answer.
+            ask "$1"
+            return $?
             ;;
     esac
+}
+
+copy_if_needed() {
+    local target="$1"
+    local files="${@:2}"
+
+    mkdir --verbose --parents "$target"
+
+    for file in $files; do
+        if [[ ! -f $file ]]; then
+            fatal "Path \"$file\" is not a file."
+        fi
+
+        local dest="$target/$(basename "$file")"
+
+        if ! cmp --quiet "$file" "$dest"; then
+            cp --verbose "$file" "$dest"
+        fi
+    done
 }
