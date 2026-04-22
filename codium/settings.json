@@ -4,8 +4,25 @@
   "editor.bracketPairColorization.enabled": false,
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.fontFamily": "'0xProto Nerd Font', 'JetBrains Mono Regular', 'Victor Mono', 'Roboto Mono', monospace",
+  "editor.fontFamily": "'jetbrains mono nl', '0xproto nerd font', 'victor mono', 'roboto mono', monospace",
   "editor.fontLigatures": false,
+  "editor.fontSize": 23,
+  "editor.fontWeight": 400,
+  "scm.compactFolders": false,
+  "explorer.compactFolders": false,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/target": true,
+    "**/.git": true,
+  },
+  "editor.semanticTokenColorCustomizations": {
+    "rules": {
+      "keyword.async": "#ff3c8d",
+      "keyword.constant": "#2cdfff",
+    }
+  },
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -15,35 +32,42 @@
         }
       },
       {
-        "scope": "string",
+        "scope": "string, string.regexp",
         "settings": {
-          "foreground": "#eee960",
+          "foreground": "#ffe554",
+        }
+      },
+      // {
+      //   "scope": "keyword.other, storage, storage.type",
+      //   "settings": {
+      //     "fontStyle": "italic",
+      //     "foreground": "#2cdfff"
+      //   }
+      // },
+      {
+        "scope": "entity.name, entity.name.namespace, storage.modifier, storage.type",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#2cdfff"
         }
       },
       {
-        "scope": "keyword, keyword.operator, keyword.control, storage",
+        "scope": "keyword.other, meta, keyword.operator, keyword.control, keyword.generator, storage.modifier.async, keyword.hard",
         "settings": {
           "foreground": "#ff3c8d",
         },
       },
       {
-        "scope": "storage.type, entity.name, entity.name.namespace",
+        "scope": "entity.name.function, support.function, meta.method.declaration",
         "settings": {
-          "fontStyle": "italic",
-          "foreground": "#2cf1ff"
+          "foreground": "#a1ff6a"
         }
       },
       {
-        "scope": "entity.name.function",
+        "scope": "support.type.property-name.json, entity.name.type, support, variable.other.enummember",
         "settings": {
-          "foreground": "#79c0ff"
-        }
-      },
-      {
-        "scope": "entity.name.type",
-        "settings": {
-          "foreground": "#79c0ff",
-          "fontStyle": "italic underline"
+          "foreground": "#79a4ff",
+          "fontStyle": "italic"
         }
       },
       {
@@ -53,9 +77,24 @@
         }
       },
       {
-        "scope": "constant.numeric, constant.language, variable.language, constant.character",
+        "scope": "variable.other.constant, constant",
         "settings": {
-          "foreground": "#ba6aff"
+          "foreground": "#dadada",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "constant.language, constant.character, variable.language, variable.parameter.function.language.special.self",
+        "settings": {
+          "foreground": "#b057eb",
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "constant.numeric",
+        "settings": {
+          "foreground": "#b057eb",
+          "fontStyle": ""
         }
       },
       {
@@ -67,13 +106,11 @@
       {
         "scope": "variable.parameter",
         "settings": {
-          "foreground": "#ffc219"
+          "foreground": "#ffa939"
         }
       }
     ],
   },
-  "editor.fontSize": 23,
-  "editor.fontWeight": "300",
   "editor.guides.indentation": false,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
@@ -85,7 +122,8 @@
   "explorer.incrementalNaming": "simple",
   "extensions.ignoreRecommendations": true,
   "files.associations": {
-    "Cargo.lock": "toml"
+    "Cargo.lock": "toml",
+    "*.vega": "kotlin"
   },
   "files.defaultLanguage": "${activeEditorLanguage}",
   "files.eol": "\n",
@@ -116,17 +154,17 @@
   "terminal.integrated.fontSize": 20,
   "terminal.integrated.fontWeightBold": 600,
 
-  "git.autofetch": true,
-  "git.confirmSync": false,
-  "git.enableSmartCommit": true,
-  "git.openRepositoryInParentFolders": "always",
+  "git.enabled": true,
+  "editor.hover.delay": 1000,
 
   "highlight-bad-chars.allowedUnicodeChars": ["¿", "¡", "ñ", "Ñ"],
 
-  "rust-analyzer.cargo.allTargets": true,
+//  "rust-analyzer.cargo.allTargets": true,
   "rust-analyzer.cargo.autoreload": true,
   "rust-analyzer.check.command": "clippy",
   "rust-analyzer.imports.prefix": "crate",
+  "rust-analyzer.lens.enable": false,
+  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.inlayHints.typeHints.enable": false,
@@ -143,9 +181,7 @@
     "**/*.css",
     "**/*.scss",
     "**/*.php",
-    "**/*.rb",
     "**/*.txt",
-    "**/*.mdown",
     "**/*.md",
     "**/*.json"
   ],
@@ -168,27 +204,13 @@
   ],
 
 	"npm.packageManager": "bun",
-  "bun.runtime": "/home/guady/.bun/bin/bun.exe",
-  "typescript.npm": "/home/guady/.bun/bin/bun.exe",
-  "typescript.tsserver.nodePath": "/home/guady/.bun/bin/bun.exe",
-  "typescript.inlayHints.parameterTypes.enabled": false,
-  "typescript.updateImportsOnFileMove.enabled": "always",
+  "bun.runtime": "/home/guady/.bun/bin/bun",
+  "js/ts.tsserver.npm.path": "/home/guady/.bun/bin/bun",
+  "js/ts.tsserver.node.path": "/home/guady/.bun/bin/bun",
+  "js/ts.inlayHints.parameterTypes.enabled": false,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
 
   "vscord.app.name": "VSCodium",
-  "vscord.behaviour.additionalFileMapping": {
-    "bat|cmd": "batch",
-    "h": "c",
-    "js": "javascript",
-    "json": "JSON",
-    "jsx": "javascript_react",
-    "kt": "kotlin",
-    "ps1": "powershell",
-    "py": "python",
-    "rs": "rust",
-    "sh": "bash",
-    "ts": "typescript",
-    "tsx": "typescript_react",
-  },
   "vscord.status.details.text.notInFile": "Somewhere in {workspace}",
   "vscord.status.details.text.editing": "Editing {file_name}{file_extension}:{current_line}:{current_column}",
   "vscord.status.details.text.idle":    "Viewing {file_name}{file_extension}",
@@ -198,10 +220,16 @@
   "vscord.status.state.text.viewing": "{problems_count_errors} errors, {problems_count_warnings} warnings.",
   "vscord.status.details.text.noWorkSpaceText": "Not in a workspace",
   "vscord.status.state.text.noWorkspaceFound": "Not in a workspace",
+
   "update.showReleaseNotes": false,
   "extensions.autoUpdate": "onlyEnabledExtensions",
   "update.enableWindowsBackgroundUpdates": false,
   "update.mode": "manual",
   "workbench.editor.empty.hint": "hidden",
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
+  "git.openRepositoryInParentFolders": "never",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "python.defaultInterpreterPath": "/usr/bin/python3",
+  "kotlin.languageServer.enabled": false,
+  "kotlin.indexing.enabled": false,
 }

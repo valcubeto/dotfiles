@@ -81,7 +81,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-reset_style() { printf "\e[00m"; }
+reset_style() { printf "\e[0m"; }
 
 # Note: I moved to Starship.
 PS1="${debian_chroot:+($debian_chroot) }"
@@ -155,7 +155,7 @@ export BASHRC="$HOME/.bashrc"
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 # Enable programmable completion features (you don't need to enable
@@ -222,8 +222,10 @@ go-to-vscodium-workspace() {
 
 dotfiles() {
   (
+    # Exit on error.
     set -e
-    cd $HOME/Dev/dotfiles
+    cd $HOME/dotfiles
+    source backup.sh
     git add . \
       && git commit -m "dotfiles function" \
       && git push
