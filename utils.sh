@@ -27,6 +27,7 @@ ask() {
 copy_if_needed() {
     local target="$1"
     local files="${@:2}"
+    local dest
 
     mkdir --verbose --parents "$target"
 
@@ -35,7 +36,7 @@ copy_if_needed() {
             fatal "Path \"$file\" is not a file."
         fi
 
-        local dest="$target/$(basename "$file")"
+        dest="$target/$(basename "$file")"
 
         if ! cmp --quiet "$file" "$dest"; then
             cp --verbose "$file" "$dest"

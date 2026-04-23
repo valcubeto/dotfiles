@@ -12,10 +12,13 @@
   "explorer.compactFolders": false,
   "search.exclude": {
     "**/node_modules": true,
-    "**/bower_components": true,
     "**/*.code-search": true,
     "**/target": true,
     "**/.git": true,
+  },
+  "workbench.colorCustomizations": {
+    "gitDecoration.modifiedResourceForeground": "#79a4ff",
+    "list.warningForeground": "#ffa939",
   },
   "editor.semanticTokenColorCustomizations": {
     "rules": {
@@ -25,6 +28,14 @@
   },
   "editor.tokenColorCustomizations": {
     "textMateRules": [
+      // comment
+      {
+        "scope": "comment",
+        "settings": {
+          "foreground": "#6f718f",
+          "fontStyle": "bold"
+        }
+      },
       {
         "scope": "comment, keyword, storage, string, entity.name.function, variable.language",
         "settings": {
@@ -54,8 +65,8 @@
       {
         "scope": "keyword.other, meta, keyword.operator, keyword.control, keyword.generator, storage.modifier.async, keyword.hard",
         "settings": {
-          "foreground": "#ff3c8d",
-        },
+          "foreground": "#ff3c8d"
+        }
       },
       {
         "scope": "entity.name.function, support.function, meta.method.declaration",
@@ -84,7 +95,7 @@
         }
       },
       {
-        "scope": "constant.language, constant.character, variable.language, variable.parameter.function.language.special.self",
+        "scope": "constant.language, constant.character, variable.language, variable.parameter.function.language.special.self, string.regexp.character-class",
         "settings": {
           "foreground": "#b057eb",
           "fontStyle": "italic"
@@ -100,7 +111,7 @@
       {
         "scope": "source, variable, meta",
         "settings": {
-          "foreground": "#dadada",
+          "foreground": "#dadada"
         }
       },
       {
@@ -179,15 +190,13 @@
     "**/*.tsx",
     "**/*.html",
     "**/*.css",
-    "**/*.scss",
-    "**/*.php",
     "**/*.txt",
     "**/*.md",
     "**/*.json"
   ],
   "todohighlight.defaultStyle": {
     "color": "cyan",
-    "backgroundColor": "rgb(255, 255, 255, 0.3)",
+    "backgroundColor": "rgb(255, 255, 255, 0.3)"
   },
   "todohighlight.keywords": [
     "todo!",
@@ -200,7 +209,7 @@
       "text": "FIXME:",
       "color": "white",
       "backgroundColor": "rgb(255, 80, 80, 0.5)"
-    },
+    }
   ],
 
 	"npm.packageManager": "bun",
@@ -226,10 +235,7 @@
   "update.enableWindowsBackgroundUpdates": false,
   "update.mode": "manual",
   "workbench.editor.empty.hint": "hidden",
-  "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
   "git.openRepositoryInParentFolders": "never",
   "editor.unicodeHighlight.nonBasicASCII": false,
   "python.defaultInterpreterPath": "/usr/bin/python3",
-  "kotlin.languageServer.enabled": false,
-  "kotlin.indexing.enabled": false,
 }
