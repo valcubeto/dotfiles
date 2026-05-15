@@ -6,12 +6,13 @@ import = [
 [window]
 opacity = 0.80
 startup_mode = "Fullscreen"
-padding = { x = 7, y = 7 }
+# padding = { x = 7, y = 7 }
 # blur = true
+dynamic_padding = true
 
 [font]
 normal = { family = "JetBrains Mono Nerd Font", style = "Regular" }
-size = 14
+size = 16.5
 
 [cursor.style]
 shape = "Beam"

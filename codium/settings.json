@@ -1,13 +1,15 @@
 {
+  "editor.autoIndent": "brackets",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.bracketPairColorization.enabled": false,
+  "editor.codeLens": false,
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.fontFamily": "'jetbrains mono nl', '0xproto nerd font', 'victor mono', 'roboto mono', monospace",
+  "editor.fontFamily": "/* 'BlexMono Nerd Font Medium', */ 'jetbrains mono nl', '0xproto nerd font', 'victor mono', 'roboto mono', monospace",
   "editor.fontLigatures": false,
-  "editor.fontSize": 23,
-  "editor.fontWeight": 400,
+  "editor.fontSize": 20,
+  "editor.fontWeight": 500,
   "scm.compactFolders": false,
   "explorer.compactFolders": false,
   "search.exclude": {
@@ -15,6 +17,7 @@
     "**/*.code-search": true,
     "**/target": true,
     "**/.git": true,
+    "**/drizzle": true
   },
   "workbench.colorCustomizations": {
     "gitDecoration.modifiedResourceForeground": "#79a4ff",
@@ -24,92 +27,130 @@
     "rules": {
       "keyword.async": "#ff3c8d",
       "keyword.constant": "#2cdfff",
+      "escapeSequence": {
+        "foreground": "#b057eb",
+        "fontStyle": "italic"
+      }
     }
   },
   "editor.tokenColorCustomizations": {
     "textMateRules": [
-      // comment
       {
-        "scope": "comment",
+        "scope": "comment, punctuation.definition.comment",
         "settings": {
           "foreground": "#6f718f",
-          "fontStyle": "bold"
+          "fontStyle": "italic"
         }
       },
       {
-        "scope": "comment, keyword, storage, string, entity.name.function, variable.language",
+        "scope": [
+          "keyword",
+          "variable.language"
+        ],
         "settings": {
           "fontStyle": "italic"
         }
       },
       {
-        "scope": "string, string.regexp",
+        "scope": ["string", "string.regexp"],
         "settings": {
           "foreground": "#ffe554",
+          "fontStyle": "italic"
         }
       },
-      // {
-      //   "scope": "keyword.other, storage, storage.type",
-      //   "settings": {
-      //     "fontStyle": "italic",
-      //     "foreground": "#2cdfff"
-      //   }
-      // },
       {
-        "scope": "entity.name, entity.name.namespace, storage.modifier, storage.type",
+        "scope": [
+          "entity.name",
+          "entity.name.namespace",
+          "storage",
+          "storage.modifier",
+          "storage.type"
+        ],
         "settings": {
           "fontStyle": "italic",
           "foreground": "#2cdfff"
         }
       },
       {
-        "scope": "keyword.other, meta, keyword.operator, keyword.control, keyword.generator, storage.modifier.async, keyword.hard",
+        "scope": [
+          "meta.preprocessor",
+          "entity.name.function.preprocessor"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#2cdfff"
+        }
+      },
+      {
+        "scope": [
+          "keyword.control",
+          "keyword.generator",
+          "keyword.hard",
+          "keyword.other",
+          "keyword.operator",
+          "keyword.operator.new",
+          "keyword.operator.expression",
+          "storage.modifier.async"
+        ],
         "settings": {
           "foreground": "#ff3c8d"
         }
       },
       {
-        "scope": "entity.name.function, support.function, meta.method.declaration",
+        "scope": ["entity.name.function", "support.function", "meta.method.declaration"],
         "settings": {
-          "foreground": "#a1ff6a"
-        }
-      },
-      {
-        "scope": "support.type.property-name.json, entity.name.type, support, variable.other.enummember",
-        "settings": {
-          "foreground": "#79a4ff",
-          "fontStyle": "italic"
-        }
-      },
-      {
-        "scope": "keyword.operator",
-        "settings": {
+          "foreground": "#a6ff54",
           "fontStyle": ""
         }
       },
       {
-        "scope": "variable.other.constant, constant",
+        "scope": [
+          "entity.name.type",
+          "support",
+          "support.class",
+          "support.type",
+          "support.type.property-name.json",
+          "variable.other.enummember"
+        ],
+        "settings": {
+          "foreground": "#79a4ff",
+          "fontStyle": ""
+        }
+      },
+      {
+        "scope": [
+          "support.type.primitive",
+          "support.type.builtin",
+        ],
+        "settings": {
+          "foreground": "#79a4ff",
+          "fontStyle": "italic underline"
+        }
+      },
+      {
+        "scope": ["variable.other.constant", "constant"],
         "settings": {
           "foreground": "#dadada",
           "fontStyle": "bold"
         }
       },
       {
-        "scope": "constant.language, constant.character, variable.language, variable.parameter.function.language.special.self, string.regexp.character-class",
+        "scope": [
+          "constant.character",
+          "constant.language",
+          "constant.language.escape",
+          "constant.numeric",
+          "variable.language",
+          "variable.parameter.function.language.special.self",
+          "string.regexp.character-class"
+        ],
         "settings": {
           "foreground": "#b057eb",
           "fontStyle": "italic"
         }
       },
       {
-        "scope": "constant.numeric",
-        "settings": {
-          "foreground": "#b057eb",
-          "fontStyle": ""
-        }
-      },
-      {
-        "scope": "source, variable, meta",
+        "scope": ["source", "variable", "meta"],
         "settings": {
           "foreground": "#dadada"
         }
@@ -117,10 +158,17 @@
       {
         "scope": "variable.parameter",
         "settings": {
-          "foreground": "#ffa939"
+          "foreground": "#ffa939",
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": ["meta", "meta.brace", "meta.block", "constant.numeric", "keyword.operator"],
+        "settings": {
+          "fontStyle": ""
         }
       }
-    ],
+    ]
   },
   "editor.guides.indentation": false,
   "editor.insertSpaces": true,
@@ -133,8 +181,7 @@
   "explorer.incrementalNaming": "simple",
   "extensions.ignoreRecommendations": true,
   "files.associations": {
-    "Cargo.lock": "toml",
-    "*.vega": "kotlin"
+    "Cargo.lock": "toml"
   },
   "files.defaultLanguage": "${activeEditorLanguage}",
   "files.eol": "\n",
@@ -224,9 +271,6 @@
   "vscord.status.details.text.editing": "Editing {file_name}{file_extension}:{current_line}:{current_column}",
   "vscord.status.details.text.idle":    "Viewing {file_name}{file_extension}",
   "vscord.status.details.text.viewing": "Viewing {file_name}{file_extension}",
-  "vscord.status.state.text.editing": "{problems_count_errors} errors, {problems_count_warnings} warnings.",
-  "vscord.status.state.text.idle":    "{problems_count_errors} errors, {problems_count_warnings} warnings.",
-  "vscord.status.state.text.viewing": "{problems_count_errors} errors, {problems_count_warnings} warnings.",
   "vscord.status.details.text.noWorkSpaceText": "Not in a workspace",
   "vscord.status.state.text.noWorkspaceFound": "Not in a workspace",
 

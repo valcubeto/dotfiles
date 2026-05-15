@@ -233,3 +233,14 @@ dotfiles() {
 }
 
 eval "$(starship init bash)"
+
+export WINDOW_TITLE=""
+
+get-title() {
+  printf '%q\n' "$WINDOW_TITLE"
+}
+
+set-title() {
+  WINDOW_TITLE="${1:-$TERM}"
+  PROMPT_COMMAND="printf '\033]0;$WINDOW_TITLE\007'"
+}
